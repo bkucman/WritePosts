@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_13_210428) do
+ActiveRecord::Schema.define(version: 2018_05_13_212617) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2018_05_13_210428) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.string "desc"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
