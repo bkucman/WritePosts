@@ -2,8 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
     can :read, :all # permissions for every user, even if not logged in    
-    if user.moderator?  # additional permissions for logged in users (they can manage their posts)
+    if user.moderator? # additional permissions for logged in users (they can manage their posts)
       can :create, Topic
       can :manage, Topic, user_id: user.id 
       if user.admin?  # additional permissions for administrators
