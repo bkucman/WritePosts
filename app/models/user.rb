@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :topics, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   def admin?
   	has_role?(:admin)
