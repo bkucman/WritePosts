@@ -4,7 +4,7 @@
 <% end %>
 <p />
 <p> 
-    <%= sortable "created_at" %>
+    <%= sortable "created_at"%>
     <%= link_to 'Najpopularniejsze', topics_path, class: "btn btn-primary" %></p>
 <p></p>
 <% @topics.each_slice(4) do |slice| %>
