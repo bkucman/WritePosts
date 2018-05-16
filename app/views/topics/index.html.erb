@@ -1,7 +1,7 @@
 <%= flash_messages %>
-
+<% if can? :create, topic %>
 <h2>Topics</h2><%= link_to 'New Topic', new_topic_path , class: "btn btn-primary" %>
-
+<% end %>
 <p></p>
 <% @topics.each_slice(4) do |slice| %>
   <div class="row">
@@ -12,6 +12,7 @@
             <h3><%= topic.name %></h3>
             <p><%= simple_format(truncate(topic.desc, length: 90)) %></p>
             <p><%= topic.user.username %></p>
+            <p><%= topic.comments.count %> </p>
             <p> <%= link_to 'Show', topic, class: "btn btn-primary" %></p>
           </div>
           </div>

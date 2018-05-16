@@ -6,7 +6,9 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.page(params[:page]).per(8)
+    @topics = Topic.page(params[:page]).per(8).left_joins(:comments)
+  .group(:id)
+  .order('COUNT(comments.id) DESC')
     #@topics = Topic.all
   end
 
@@ -14,7 +16,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topics = Topic.find(params[:id])
-    @comments = @topics.comments.page(params[:page]).per(10)
+    @comments = @topics.comments.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   # GET /topics/new

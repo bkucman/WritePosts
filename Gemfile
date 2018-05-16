@@ -30,6 +30,7 @@ gem 'rolify'
 gem 'decent_exposure', '3.0.0'
 
 gem 'kaminari'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
