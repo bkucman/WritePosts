@@ -48,7 +48,7 @@ end
 		desc: Faker::Lorem.paragraph(2, false, 4),
 		user_id: Random.rand(1..3),
 		published: "true",
-		topic_id: Random.rand(12..25)
+		topic_id: Random.rand(1..15)
 	}])
 end
 
