@@ -1,24 +1,38 @@
-# README
+# Architektura serwisów internetowych 2018
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Studenci |
+|:--:
+|[Błażej Kucman](https://github.com/kucmeno), [Marta Kotewicz](https://github.com/mkotewicz) |
 
-Things you may want to cover:
+## Projekt na egzamin 
+Aplikacja CRUD pozwalająca pisać komentarze do tematów, jak również czytanie news. Została zaimplementowana Autentykacja utoryzacja użytkowników ze sztywnym podziałem na role .
+User może czytać wszytko i komentować (edytować i usuwać swoje komentarze).
+Moderator dodaje tematy io readguje komentarze , dodaje news i redaguje je.
+Admin może wszytko.
 
-* Ruby version
+Do obsługi połączenia obrazów z modelami zostało użyte Active Storage, a do fotmatowania zdjęć został użyty gem 'mini_magick'.
+Widoki są responsywne
 
-* System dependencies
+Po operacjach CRUD wyświetlany flash-message
 
-* Configuration
+## Użyte technologie/gemy
+ Rails ver. 5.2.0
 
-* Database creation
+ Ruby: 2.5.1
 
-* Database initialization
+ Zarządzanie użytkownikami i rolami
+ gem 'cancancan', '~> 2.2'
+ gem 'devise'
+ gem 'rolify'
 
-* How to run the test suite
+ Paginacja
+ gem 'kaminari'
 
-* Services (job queues, cache servers, search engines, etc.)
+ Fejkowe dane
+ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
-* Deployment instructions
+fotmatowanie zdjęć - :gem: gem 'mini_magick'
 
-* ...
+[DOCKERHUB] https://hub.docker.com/r/kucmeno/writeposts_web/
+
+[Instrukcja] Instrukcje uruchomienia są zapisane w step.txt
