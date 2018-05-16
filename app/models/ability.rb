@@ -4,8 +4,6 @@ class Ability
   def initialize(user)
     user ||= User.new
     #can :read, :all # permissions for every user, even if not logged in
-
-    user ||= User.new
     if user.simple_user?
         can :create, Comment
         can :manage, Comment, user_id: user.id

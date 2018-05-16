@@ -1,5 +1,8 @@
 <%= flash_messages %>
+<p />
+<% if can? :create, @news %>
 <%= link_to 'Dodaj nowy news', new_news_path , class: "btn btn-lg btn-primary"%>
+<% end %>
     <% if @news.empty? %>
       <p class="lead">Brak news</p>
     <% else %>
@@ -17,13 +20,11 @@
            <h2><%= news.name %></h2>
 
               <p><%= simple_format(truncate(news.desc, length: 90)) %></p>
-
-         
-
+              <%= link_to 'Wyświetl', news, class: "btn btn-lg btn-primary"  %>
               <% if can? :manage, news %>
               <%= link_to 'Edcyja', edit_news_path(news), class: "btn btn-lg btn-primary"  %>
               <%= link_to 'Usuń', news_path(news), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
-              <%= link_to 'Wyświetl', news, class: "btn btn-lg btn-primary"  %>
+              
 
               <% end %>
         </div>
