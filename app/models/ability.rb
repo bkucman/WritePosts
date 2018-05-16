@@ -10,11 +10,13 @@ class Ability
         can :create, Comment
         can :manage, Comment, user_id: user.id
         can :read, Topic
+        can :read, News
     elsif user.moderator? # additional permissions for logged in users (they can manage their posts)
       can :read, Topic
       can :create, Topic
       can :manage, Topic, user_id: user.id
       can :manage, Comment
+      can :manage, News
     elsif user.admin?  # additional permissions for administrators
         can :manage, :all
     else

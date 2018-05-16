@@ -6,7 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :news, dependent: :destroy
   after_create :set_default_role
+
+  validates :name, length: { minimum: 3 , message: "Co najmniej 3 znaki."}
   
   def admin?
   	has_role?(:admin)

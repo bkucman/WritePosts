@@ -1,0 +1,16 @@
+<%= flash_messages %>
+<main role="main" class="container">
+	<div class="jumbotron ">
+		<hr />
+		<h2><%= @news.name %></h2>
+		<p><%= @news.desc %></p>
+
+		<% if can? :manage, @news %>
+		<%= link_to 'Edcyja', edit_news_path(@news), class: "btn btn-lg btn-primary"  %>
+		<%= link_to 'Usuń', news_path(@news), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+		<%= link_to 'Wróć', news_index_path, class: "btn btn-lg btn-success"  %>
+
+		<% end %>
+		<hr />
+  	</div>
+</main>

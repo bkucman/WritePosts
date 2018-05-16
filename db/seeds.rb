@@ -51,3 +51,11 @@ end
 		topic_id: Random.rand(12..25)
 	}])
 end
+
+30.times do
+	News.create([{
+		name: Faker::App.unique.name,
+		desc: Faker::Lorem.paragraph(2,false,7),
+		user_id: "2"
+	}])
+end
