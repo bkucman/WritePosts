@@ -27,6 +27,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan', '~> 2.2'
 gem 'devise'
 gem 'rolify'
+gem 'decent_exposure', '3.0.0'
+
+gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

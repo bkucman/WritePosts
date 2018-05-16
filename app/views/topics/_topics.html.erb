@@ -1,12 +1,7 @@
-<%= flash_messages %>
-
-<h2>Topics</h2><%= link_to 'New Topic', new_topic_path , class: "btn btn-primary" %>
-
-<p></p>
 <% @topics.each_slice(4) do |slice| %>
   <div class="row">
     <% slice.each do |topic| %>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3">
         <div class="thumbnail">
           <div class="caption">
             <h3><%= topic.name %></h3>
@@ -19,7 +14,4 @@
     <% end %>
   </div>
 <% end %>
-<hr />
-<%= paginate @topics %>
-<%= page_entries_info @topics %>
-<br>
+

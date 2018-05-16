@@ -8,3 +8,42 @@
     <a><%= link_to 'Back', topics_path, class: "btn btn-lg btn-primary"  %></a>
   </div>
 </main>
+
+<main role="main" class="container">
+	<div class="jumbotron " style="background:grey !important">
+		<% if !user_signed_in? %>
+		<p class="lead">Nie możesz dodawać komentarzy</p>
+		<% else %>
+		<%= form_for([@topic, @topic.comments.build])  do |f| %>
+			<%= f.hidden_field :published %>
+			 <div class="field"><%= f.label :desc %><%= f.text_area :desc %></div>
+			
+			  <div class="actions">
+    				<%= f.submit %>
+  				</div>
+			<% end %>
+		<% end %>
+  	</div>
+</main>
+
+<main role="main" class="container">
+	<div class="jumbotron " style="background:white !important">
+		<% if @comments.empty? %>
+			<p class="lead">Brak komentarzy</p>
+		<% else %>
+			<% @comments.each do |comment| %>
+			<hr />
+				<h2><%= comment.user.username %></h2>
+				<p><%= comment.desc %></p>
+				<% if can? :manage, comment %>
+				<a><%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-lg btn-primary"  %></a>
+				<a><%= link_to 'Destroy', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+
+				</a>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</main>
+<%= paginate @comments %>
+<%= page_entries_info @comments %>

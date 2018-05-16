@@ -2,15 +2,19 @@ class TopicsController < ApplicationController
   load_and_authorize_resource
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
+  expose :topic
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.page(params[:page]).per(8)
+    #@topics = Topic.all
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topics = Topic.find(params[:id])
+    @comments = @topics.comments.page(params[:page]).per(10)
   end
 
   # GET /topics/new
@@ -58,6 +62,7 @@ class TopicsController < ApplicationController
     def set_topic
       @topic = Topic.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
