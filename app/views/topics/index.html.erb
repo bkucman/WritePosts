@@ -2,6 +2,10 @@
 <% if can? :create, topic %>
 <h2>Topics</h2><%= link_to 'New Topic', new_topic_path , class: "btn btn-primary" %>
 <% end %>
+<p />
+<p> 
+    <%= sortable "created_at" %>
+    <%= link_to 'Najpopularniejsze', topics_path, class: "btn btn-primary" %></p>
 <p></p>
 <% @topics.each_slice(4) do |slice| %>
   <div class="row">

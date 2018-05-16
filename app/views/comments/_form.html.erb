@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<%= form_with(model: comment, local: true) do |form| %>
   <div class="field">
     <%= form.label :desc %>
     <%= form.text_field :desc %>
