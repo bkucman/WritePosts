@@ -1,0 +1,17 @@
+<% @topics.each_slice(4) do |slice| %>
+  <div class="row">
+    <% slice.each do |topic| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3><%= topic.name %></h3>
+            <p><%= simple_format(truncate(topic.desc, length: 90)) %></p>
+            <p><%= topic.user.username %></p>
+            <p> <%= link_to 'Show', topic, class: "btn btn-primary" %></p>
+          </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+

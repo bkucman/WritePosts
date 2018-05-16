@@ -1,10 +1,55 @@
-<p id="notice"><%= notice %></p>
+<%= flash_messages %>
+
 
  <main role="main" class="container">
   <div class="jumbotron">
     <h1><%= @topic.name %></h1>
     <p class="lead"><%= @topic.desc %></p>
-    <a><%= link_to 'Edit', edit_topic_path(@topic), class: "btn btn-lg btn-primary"  %></a>
-    <a><%= link_to 'Back', topics_path, class: "btn btn-lg btn-primary"  %></a>
+    <% if can? :update, topic %>
+    <%= link_to 'Edycja', edit_topic_path(@topic), class: "btn btn-lg btn-primary"  %>
+	<%= link_to 'Usuń', topic_path(@topic), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+
+    <% end %>
+    <%= link_to 'Wróć', topics_path, class: "btn btn-lg btn-primary"  %>
   </div>
 </main>
+
+<main role="main" class="container">
+	<div class="jumbotron " style="background:grey !important">
+		<h2>Dodaj komentarz</h2>
+		<% if !user_signed_in? %>
+		<p class="lead">Nie możesz dodawać komentarzy</p>
+		<% else %>
+		<%= form_for([@topic, @topic.comments.build])  do |f| %>
+
+			   <div class="form-group col-md-10 ">
+			    <%= f.text_area :desc, class: "form-control" %>
+				</div>
+			
+			  <div class="actions">
+    				<%= f.submit "Dodaj",  class: "btn btn-lg btn-success" %>
+  				</div>
+			<% end %>
+		<% end %>
+  	</div>
+</main>
+
+<main role="main" class="container">
+	<div class="jumbotron " style="background:white !important">
+		<% if @comments.empty? %>
+			<p class="lead">Brak komentarzy</p>
+		<% else %>
+			<% @comments.each do |comment| %>
+			<hr />
+				<h2><%= comment.user.username %></h2>
+				<p><%= comment.desc %></p>
+				<% if can? :manage, comment %>
+				<%= link_to 'Edcyja', edit_comment_path(comment), class: "btn btn-lg btn-primary"  %>
+				<%= link_to 'Usuń', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</main>
+<%= paginate @comments %>
+<%= page_entries_info @comments %>

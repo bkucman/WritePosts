@@ -12,13 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <label>Nazwa</label>
+    <p>
     <%= form.text_field :name %>
+  </p>
   </div>
 
   <div class="field">
-    <%= form.label :desc %>
-    <%= form.text_field :desc %>
+    <label>Opis    </label>
+    <p>
+    <%= form.text_area :desc %>
+  </p>
   </div>
 
   <div class="field">
@@ -27,6 +31,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Edytuj" ,class: "btn btn-primary btn-lg "%>
+    <%= link_to 'Wróć', topic, class: "btn btn-success btn-lg"%>
   </div>
 <% end %>

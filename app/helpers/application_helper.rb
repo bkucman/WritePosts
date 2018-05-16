@@ -15,4 +15,23 @@ module ApplicationHelper
     end
     nil
   end
+    def users_roles user
+    roles = ''
+    user.roles.each do |role|
+      roles << "#{role.name} "
+    end
+    roles
+  end
+
+  def sortable(column, title = nil)
+    if sort_direction == "asc"
+
+     title ||= "Sortuj od najnowszych"
+    else
+      title ||= "Sortuj od najstarszych"
+    end
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = column == sort_column && sort_direction == 'desc' ? 'asc' : 'desc'
+    link_to title, { sort: column, direction: direction }, class: "btn btn-primary"
+end
 end

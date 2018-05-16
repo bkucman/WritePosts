@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy
+  after_create :set_default_role
   
   def admin?
   	has_role?(:admin)
@@ -17,5 +18,9 @@ class User < ApplicationRecord
 
   def simple_user?
   	has_role?(:simple_user)
+  end
+  private
+    def set_default_role
+    add_role(:simple_user)
   end
 end

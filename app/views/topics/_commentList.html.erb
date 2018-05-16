@@ -1,0 +1,15 @@
+ <p> dasadasdasd</p>
+ <main role="main" class="container">
+  <div class="jumbotron">
+  	<% if comments.empty? %>
+  		<p class="lead">Brak komentarzy</p>
+  	<% else %>
+  		<% comments.each do |comment| %>
+		    <h1><%= comment.user.username %></h1>
+		    <p><%= @topic.desc %></p>
+		    <a><%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-lg btn-primary"  %></a>
+
+		<% end %>
+    <% end %>
+  </div>
+</main>

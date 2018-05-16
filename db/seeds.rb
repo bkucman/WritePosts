@@ -33,3 +33,21 @@ user3 = User.create(
 	password_confirmation: 'user123'
 	)
 user3.add_role(:simple_user)
+
+15.times do
+	Topic.create([{
+		name: Faker::App.unique.name,
+		desc: Faker::Educator.unique.course,
+		published: "true",
+		user_id: Random.rand(1..3)
+			}])
+end
+
+40.times do
+	Comment.create([{
+		desc: Faker::Lorem.paragraph(2, false, 4),
+		user_id: Random.rand(1..3),
+		published: "true",
+		topic_id: Random.rand(12..25)
+	}])
+end
