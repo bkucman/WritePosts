@@ -4,19 +4,23 @@ class Ability
   def initialize(user)
     user ||= User.new
     #can :read, :all # permissions for every user, even if not logged in
-
-    user ||= User.new
     if user.simple_user?
         can :create, Comment
         can :manage, Comment, user_id: user.id
         can :read, Topic
+        can :read, News
     elsif user.moderator? # additional permissions for logged in users (they can manage their posts)
       can :read, Topic
       can :create, Topic
+      can :create, News
       can :manage, Topic, user_id: user.id
       can :manage, Comment
+      can :manage, News
     elsif user.admin?  # additional permissions for administrators
+        can :create, :all
         can :manage, :all
+        can :read, :all
+
     else
       can :read, :all
     end

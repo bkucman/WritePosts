@@ -1,7 +1,7 @@
 <%= form_with(model: topic, local: true) do |form| %>
   <% if topic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+    <div class="alert alert-danger">
+      <h2>Wystąpiły <%= topic.errors.count %> błędy.</h2>
 
       <ul>
       <% topic.errors.full_messages.each do |message| %>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Edytuj" ,class: "btn btn-primary btn-lg "%>
+    <%= form.submit "Akceptuj" ,class: "btn btn-primary btn-lg "%>
     <%= link_to 'Wróć', topic, class: "btn btn-success btn-lg"%>
   </div>
 <% end %>

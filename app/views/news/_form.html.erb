@@ -1,0 +1,37 @@
+<%= form_with(model: news, local: true) do |form| %>
+  <% if news.errors.any? %>
+   <div class="alert alert-danger">
+      <h2>Wystąpiły <%= news.errors.count %> błędy.</h2>
+      <ul>
+      <% news.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+      <label>Nazwa</label>
+    <p>
+    <%= form.text_field :name %>
+  </p>
+  </div>
+
+  <div class="field">
+    
+      <label>Treść</label>
+    <p>
+    <%= form.text_area :desc %>
+  </p>
+  </div>
+  <div class="field">
+    <label><%= form.label :image, :class => "control-label col-md-1" %></label>
+    <p>
+     <%= form.file_field :image %></td>
+   </p>
+  </div>
+  <div class="actions">
+    <%= form.submit "Akceptuj", class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

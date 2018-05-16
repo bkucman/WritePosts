@@ -16,6 +16,7 @@ user1 = User.create(
 	password: 'admin123',
 	password_confirmation: 'admin123'
 	)
+user1.remove_role(:simple_user)
 user1.add_role(:admin)
 
 user2 = User.create(
@@ -24,6 +25,7 @@ user2 = User.create(
 	password: 'moderator123',
 	password_confirmation: 'moderator123'
 	)
+user2.remove_role(:simple_user)
 user2.add_role(:moderator)
 
 user3 = User.create(
@@ -32,7 +34,6 @@ user3 = User.create(
 	password: 'user123',
 	password_confirmation: 'user123'
 	)
-user3.add_role(:simple_user)
 
 15.times do
 	Topic.create([{
@@ -51,3 +52,12 @@ end
 		topic_id: Random.rand(12..25)
 	}])
 end
+
+30.times do
+	News.create([{
+		name: Faker::App.unique.name,
+		desc: Faker::Lorem.paragraph(2,false,7),
+		user_id: "2"
+	}])
+end
+

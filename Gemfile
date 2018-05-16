@@ -32,6 +32,7 @@ gem 'decent_exposure', '3.0.0'
 gem 'kaminari'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'foundation-icons-sass-rails'
+gem 'mini_magick'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -59,7 +60,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
+group :production do
+  gem 'pg', '~> 1.0.0'
+end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'

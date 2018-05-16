@@ -1,0 +1,26 @@
+<%= flash_messages %>
+<main role="main" class="container">
+	<div class="jumbotron ">
+		<hr />
+		<div class="row">
+	        <div class="col-md-2">
+	        	<% if @news.image.attached? %>
+
+	      			<%= image_tag @news.image.variant(resize: "100x100") %>
+				<% end %>
+	        </div>
+	        <div class="col-md-10">
+	        	<h2><%= @news.name %></h2>
+				<p><%= @news.desc %></p>
+				<%= link_to 'Wróć', news_index_path, class: "btn btn-lg btn-success"  %>
+				<% if can? :manage, @news %>
+				<%= link_to 'Edcyja', edit_news_path(@news), class: "btn btn-lg btn-primary"  %>
+				<%= link_to 'Usuń', news_path(@news), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+				
+
+				<% end %>
+	        </div>
+       	</div>
+		<hr />
+  	</div>
+</main>
