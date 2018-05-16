@@ -1,15 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= flash_messages %>
+
 
  <main role="main" class="container">
   <div class="jumbotron">
     <h1><%= @topic.name %></h1>
     <p class="lead"><%= @topic.desc %></p>
     <% if can? :update, topic %>
-    <%= link_to 'Edit', edit_topic_path(@topic), class: "btn btn-lg btn-primary"  %>
-	<%= link_to 'Destroy', topic_path(@topic), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+    <%= link_to 'Edycja', edit_topic_path(@topic), class: "btn btn-lg btn-primary"  %>
+	<%= link_to 'Usuń', topic_path(@topic), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
 
     <% end %>
-    <%= link_to 'Back', topics_path, class: "btn btn-lg btn-primary"  %>
+    <%= link_to 'Wróć', topics_path, class: "btn btn-lg btn-primary"  %>
   </div>
 </main>
 
@@ -43,8 +44,8 @@
 				<h2><%= comment.user.username %></h2>
 				<p><%= comment.desc %></p>
 				<% if can? :manage, comment %>
-				<%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-lg btn-primary"  %>
-				<%= link_to 'Destroy', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+				<%= link_to 'Edcyja', edit_comment_path(comment), class: "btn btn-lg btn-primary"  %>
+				<%= link_to 'Usuń', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
 				<% end %>
 			<% end %>
 		<% end %>

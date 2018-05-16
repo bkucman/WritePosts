@@ -12,17 +12,11 @@
   <% end %>
 <%= form_with(model: comment, local: true) do |form| %>
   <div class="field">
-    <%= form.label :desc %>
-    <%= form.text_field :desc %>
+    <%= form.text_area :desc, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :published %>
-    <%= form.check_box :published %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit class: "btn btn-primary btn-lg "%>
+<%= link_to 'Back', comment.topic, class: "btn btn-success btn-lg "%>
 <% end %>
 <% end %>
