@@ -12,11 +12,15 @@ class Ability
     elsif user.moderator? # additional permissions for logged in users (they can manage their posts)
       can :read, Topic
       can :create, Topic
+      can :create, News
       can :manage, Topic, user_id: user.id
       can :manage, Comment
       can :manage, News
     elsif user.admin?  # additional permissions for administrators
+        can :create, :all
         can :manage, :all
+        can :read, :all
+
     else
       can :read, :all
     end

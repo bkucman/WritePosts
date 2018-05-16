@@ -1,6 +1,6 @@
 <%= flash_messages %>
-<p />
-<% if can? :create, @news %>
+<p ></p>
+<% if can? :create, News %>
 <%= link_to 'Dodaj nowy news', new_news_path , class: "btn btn-lg btn-primary"%>
 <% end %>
     <% if @news.empty? %>
