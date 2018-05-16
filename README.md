@@ -21,14 +21,19 @@ Po operacjach CRUD wyświetlany flash-message
  Ruby: 2.5.1
 
  Zarządzanie użytkownikami i rolami
+
  gem 'cancancan', '~> 2.2'
+
  gem 'devise'
+
  gem 'rolify'
 
  Paginacja
+
  gem 'kaminari'
 
  Fejkowe dane
+ 
  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 fotmatowanie zdjęć - :gem: gem 'mini_magick'
