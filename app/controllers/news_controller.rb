@@ -1,10 +1,11 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 
+
   # GET /news
   # GET /news.json
   def index
-    @news = News.page(params[:page]).per(10)
+    @news = News.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /news/1
@@ -27,6 +28,7 @@ class NewsController < ApplicationController
 
     @news = News.new(news_params)
     @news.user = current_user
+
     respond_to do |format|
       if @news.save
         format.html { redirect_to @news, notice: 'News was successfully created.' }
@@ -70,6 +72,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:name, :desc)
+      params.require(:news).permit(:name, :desc, :image)
     end
 end

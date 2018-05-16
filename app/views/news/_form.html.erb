@@ -25,7 +25,12 @@
     <%= form.text_area :desc %>
   </p>
   </div>
-
+  <div class="field">
+    <label><%= form.label :image, :class => "control-label col-md-1" %></label>
+    <p>
+     <%= form.file_field :image %></td>
+   </p>
+  </div>
   <div class="actions">
     <%= form.submit "Akceptuj", class: "btn btn-lg btn-primary" %>
   </div>

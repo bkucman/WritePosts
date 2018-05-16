@@ -7,15 +7,28 @@
       <main role="main" class="container">
       <div class="jumbotron ">
       <hr />
-        <h2><%= news.name %></h2>
-        <p><%= simple_format(truncate(news.desc, length: 90)) %></p>
+      <div class="row">
+        <div class="col-md-2">
+               <% if news.image.attached? %>
+                    <%= image_tag news.image.variant(resize: "100x100") %>
+              <% end %>
+        </div>
+        <div class="col-md-10">
+           <h2><%= news.name %></h2>
 
-        <% if can? :manage, news %>
-        <%= link_to 'Edcyja', edit_news_path(news), class: "btn btn-lg btn-primary"  %>
-        <%= link_to 'Usuń', news_path(news), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
-        <%= link_to 'Wyświetl', news, class: "btn btn-lg btn-primary"  %>
+              <p><%= simple_format(truncate(news.desc, length: 90)) %></p>
 
-        <% end %>
+         
+
+              <% if can? :manage, news %>
+              <%= link_to 'Edcyja', edit_news_path(news), class: "btn btn-lg btn-primary"  %>
+              <%= link_to 'Usuń', news_path(news), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger" %>
+              <%= link_to 'Wyświetl', news, class: "btn btn-lg btn-primary"  %>
+
+              <% end %>
+        </div>
+             
+      </div>
          <hr />
           </div>
       </main>
