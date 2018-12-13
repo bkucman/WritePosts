@@ -1,4 +1,6 @@
 # Architektura serwisów internetowych 2018
+## Uniwersytet Gdański
+## Studia licencjackie: Informatyka rok.3 sem.6, 2017/18
 
 |Studenci |
 |:--:
